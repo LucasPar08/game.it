@@ -45,12 +45,15 @@ Hay una plantilla lista en [`templates/juego-base/`](templates/juego-base/) y `n
 | --- | --- | --- | --- |
 | Menú del portal | Banner al final, separado de las tarjetas | Siempre | Bloque `slots.menuBottom` |
 | Dentro de los juegos | Banner en una franja abajo: **el juego se achica**, nunca queda tapado | Solo en menús, pausas y fin de partida; se quita al volver a jugar; con 1,2 s de demora; como mucho uno nuevo por minuto | Bloque `slots.gameBreak` |
-| Dentro de los juegos | Con recompensa ("Continuar · ver anuncio", "Producción ×2") | Solo si el jugador lo elige | H5 Games Ads |
+| Dentro de los juegos | Con recompensa ("Continuar · ver anuncio", "Producción ×2") | Solo si el jugador lo elige; **apagado** hasta que Google apruebe H5 Games Ads (`games.rewarded`) | H5 Games Ads |
 | Dentro de los juegos | Pantalla completa entre partidas | **Apagado** (`games.interstitials: false`) | H5 Games Ads |
 
 Todos llevan la etiqueta "Publicidad" y los banners se pueden ocultar (24 h). Nunca aparecen en la pantalla de carga,
 mientras se juega ni durante un partido online en curso. Stack no muestra banners (se toca en cualquier parte de la
 pantalla y habría clics sin querer). Con `?ads=preview` se ven todos los espacios simulados, sin pedir anuncios.
+
+Política de privacidad (la exige AdSense): `public/privacidad/index.html` → `/privacidad/`, enlazada en Preferencias → Ayuda
+y con `<link rel="privacy-policy">` en el `<head>`. Si se suma un servicio que use datos, se actualiza ahí.
 
 ## Cómo está armado
 

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es" data-theme="dark" data-accent="cyan">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Qué datos intervienen al usar game.it y sus anuncios." />
+    <meta name="theme-color" content="#07070a" />
+    <title>Privacidad · game.it</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script>
+      // Mismo tema, acento e idioma que el portal (preferencias guardadas en este dispositivo).
+      (function () {
+        var p = {};
+        try { p = JSON.parse(localStorage.getItem('gameit:prefs')) || {}; } catch (e) {}
+        var d = document.documentElement;
+        var q = new URLSearchParams(location.search).get('lang');
+        d.dataset.theme = p.theme === 'light' || p.theme === 'dark' ? p.theme : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        d.dataset.accent = p.accent || 'cyan';
+        d.lang = q === 'en' || q === 'es' ? q : p.lang === 'en' || p.lang === 'es' ? p.lang : /^es/i.test(navigator.language || 'es') ? 'es' : 'en';
+      })();
+    </script>
+    <style>
+      :root {
+        --font: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+        --bg: #07070a; --surface: #0d0d13; --fg: #eaeaf0; --mute: #8a8a9c; --line: rgba(255, 255, 255, 0.1);
+        --cyan: #00f0ff; --magenta: #ff2bd6; --lime: #b6ff00; --amber: #ffb800; --violet: #9d6bff; --red: #ff3b5c;
+        color-scheme: dark;
+      }
+      :root[data-theme='light'] {
+        --bg: #f3f3f7; --surface: #ffffff; --fg: #15151c; --mute: #5f5f72; --line: rgba(0, 0, 0, 0.1);
+        --cyan: #00839e; --magenta: #b10080; --lime: #3f7a00; --amber: #a86400; --violet: #5a2fd6; --red: #c8143a;
+        color-scheme: light;
+      }
+      :root[data-accent='cyan'] { --accent: var(--cyan); }
+      :root[data-accent='magenta'] { --accent: var(--magenta); }
+      :root[data-accent='lime'] { --accent: var(--lime); }
+      :root[data-accent='amber'] { --accent: var(--amber); }
+      :root[data-accent='violet'] { --accent: var(--violet); }
+      :root[data-accent='red'] { --accent: var(--red); }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 400 14px/1.7 var(--font);
+      }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: calc(20px + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) 64px max(20px, env(safe-area-inset-left, 0px));
+      }
+      header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 36px; }
+      .logo { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: var(--fg); text-decoration: none; }
+      .logo b { color: var(--accent); font-weight: 700; }
+      .langs { display: inline-flex; border: 1px solid var(--line); border-radius: 99px; padding: 3px; }
+      .langs button {
+        font: 500 11px/1 var(--font); letter-spacing: 0.08em; color: var(--mute);
+        background: none; border: 0; border-radius: 99px; padding: 7px 11px; cursor: pointer;
+      }
+      .langs button[aria-pressed='true'] { color: var(--bg); background: var(--accent); }
+      h1 { font-size: clamp(26px, 6vw, 34px); line-height: 1.15; letter-spacing: -0.03em; margin: 0 0 6px; }
+      .date { color: var(--mute); font-size: 12px; margin: 0 0 28px; }
+      h2 {
+        font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+        color: var(--accent); margin: 34px 0 10px; padding-top: 18px; border-top: 1px dashed var(--line);
+      }
+      p, li { color: var(--fg); }
+      ul { margin: 0; padding-left: 18px; }
+      li { margin: 0 0 8px; }
+      li::marker { color: var(--mute); }
+      a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+      code { font: inherit; color: var(--mute); }
+      article[hidden] { display: none; }
+      .back { display: inline-block; margin-top: 40px; color: var(--mute); text-decoration: none; }
+      .back:hover { color: var(--fg); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a class="logo" href="/">game<b>.it</b></a>
+        <div class="langs" role="group" aria-label="Idioma / Language">
+          <button type="button" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </header>
+
+      <article lang="es">
+        <h1>Privacidad</h1>
+        <p class="date">Actualizada el 14 de noviembre de 2026</p>
+        <p>
+          game.it es un portal de juegos web gratis. No pide cuenta ni usa herramientas propias de analítica o
+          seguimiento. Se sostiene con anuncios de Google AdSense; esta página explica qué datos intervienen.
+        </p>
+
+        <h2>En tu dispositivo</h2>
+        <ul>
+          <li>Preferencias (tema, sonido, idioma, controles), récords y progreso de los juegos se guardan en el almacenamiento local del navegador, con el prefijo <code>gameit:</code>. No se mandan a ningún lado y se borran al borrar los datos del sitio en el navegador.</li>
+          <li>El apodo para jugar online queda guardado solo mientras dura la sesión del navegador.</li>
+          <li>Una copia de los archivos del sitio queda en caché para que cargue rápido y funcione sin conexión.</li>
+        </ul>
+
+        <h2>Anuncios de Google AdSense</h2>
+        <ul>
+          <li>Proveedores externos, entre ellos Google, usan cookies para mostrar anuncios según tus visitas anteriores a este sitio y a otros sitios web.</li>
+          <li>Las cookies publicitarias de Google les permiten a Google y a sus socios mostrarte anuncios según tus visitas a game.it y a otros sitios de Internet.</li>
+          <li>Podés desactivar los anuncios personalizados en la <a href="https://adssettings.google.com" rel="noopener" target="_blank">configuración de anuncios de Google</a>, y el uso de cookies de otros proveedores para anuncios personalizados en <a href="https://www.aboutads.info/choices/" rel="noopener" target="_blank">aboutads.info</a> o, en Europa, en <a href="https://www.youronlinechoices.eu" rel="noopener" target="_blank">youronlinechoices.eu</a>.</li>
+          <li>Además de Google pueden mostrar anuncios otros proveedores y redes publicitarias que trabajan con Google. La lista está en <a href="https://support.google.com/adsense/answer/9012903" rel="noopener" target="_blank">socios de tecnología publicitaria de Google</a>.</li>
+          <li>En el Espacio Económico Europeo, el Reino Unido y Suiza se te pide consentimiento antes de usar cookies publicitarias, con el aviso de Google (una plataforma de consentimiento certificada). Podés cambiar tu elección cuando quieras desde el enlace de privacidad y cookies que aparece en la página principal.</li>
+          <li>Cómo usa Google la información de los sitios que muestran sus anuncios: <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">policies.google.com/technologies/partner-sites</a>.</li>
+        </ul>
+
+        <h2>Juegos online</h2>
+        <p>
+          Al jugar online te conectás al servidor de juegos de game.it: usa el apodo que elijas y tus jugadas para que
+          funcione la partida, y tu dirección IP para limitar abusos. No guarda historial ni perfiles de jugadores.
+        </p>
+
+        <h2>Reportes</h2>
+        <p>
+          Si mandás un reporte desde Preferencias → Ayuda → Reportar, se usa tu correo para verificarlo y contestarte,
+          junto con lo que escribas y datos técnicos (idioma, dispositivo, navegador, tamaño de pantalla, juego abierto,
+          versión del sitio y hora). Solo sirven para resolver el reporte.
+        </p>
+
+        <h2>Otros servicios</h2>
+        <ul>
+          <li>Las fuentes se cargan desde Google Fonts.</li>
+          <li>Trotamundos muestra mapas de OpenFreeMap y vistas de Google Maps.</li>
+          <li>El sitio está alojado en Render y pasa por Cloudflare, que procesan datos técnicos de cada visita (como la IP) para servirla y protegerla.</li>
+        </ul>
+        <p>Cada servicio aplica su propia política de privacidad.</p>
+
+        <h2>Cambios</h2>
+        <p>Si algo cambia, se actualiza esta página y su fecha.</p>
+
+        <a class="back" href="/">← Volver a los juegos</a>
+      </article>
+
+      <article lang="en" hidden>
+        <h1>Privacy</h1>
+        <p class="date">Updated November 14, 2026</p>
+        <p>
+          game.it is a free web games portal. It requires no account and uses no analytics or tracking tools of its
+          own. It is funded by Google AdSense ads; this page explains which data is involved.
+        </p>
+
+        <h2>On your device</h2>
+        <ul>
+          <li>Preferences (theme, sound, language, controls), high scores and game progress are kept in your browser's local storage, under the <code>gameit:</code> prefix. They are never sent anywhere and are removed when you clear this site's data in your browser.</li>
+          <li>The nickname you use for online play is kept only for the current browser session.</li>
+          <li>A copy of the site's files is cached so it loads fast and works offline.</li>
+        </ul>
+
+        <h2>Google AdSense ads</h2>
+        <ul>
+          <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this website or other websites.</li>
+          <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visits to game.it and/or other sites on the Internet.</li>
+          <li>You can opt out of personalized advertising in <a href="https://adssettings.google.com" rel="noopener" target="_blank">Google Ads Settings</a>, and out of other vendors' use of cookies for personalized advertising at <a href="https://www.aboutads.info/choices/" rel="noopener" target="_blank">aboutads.info</a> or, in Europe, <a href="https://www.youronlinechoices.eu" rel="noopener" target="_blank">youronlinechoices.eu</a>.</li>
+          <li>Besides Google, other vendors and ad networks that work with Google may serve ads. They are listed in <a href="https://support.google.com/adsense/answer/9012903" rel="noopener" target="_blank">Google's ad technology partners</a>.</li>
+          <li>In the European Economic Area, the UK and Switzerland you are asked for consent before advertising cookies are used, through Google's notice (a certified consent management platform). You can change your choice at any time from the privacy and cookie settings link shown on the main page.</li>
+          <li>How Google uses information from sites that show its ads: <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">policies.google.com/technologies/partner-sites</a>.</li>
+        </ul>
+
+        <h2>Online games</h2>
+        <p>
+          When you play online you connect to the game.it game server: it uses the nickname you choose and your moves to
+          run the match, and your IP address to limit abuse. It keeps no history or player profiles.
+        </p>
+
+        <h2>Reports</h2>
+        <p>
+          If you send a report from Preferences → Help → Report, your email is used to verify it and reply to you, along
+          with what you write and technical details (language, device, browser, screen size, open game, site version and
+          time). They are used only to handle the report.
+        </p>
+
+        <h2>Other services</h2>
+        <ul>
+          <li>Fonts are loaded from Google Fonts.</li>
+          <li>Trotamundos shows maps from OpenFreeMap and views from Google Maps.</li>
+          <li>The site is hosted on Render and served through Cloudflare, which process technical data from each visit (such as the IP address) to deliver and protect it.</li>
+        </ul>
+        <p>Each service applies its own privacy policy.</p>
+
+        <h2>Changes</h2>
+        <p>If anything changes, this page and its date are updated.</p>
+
+        <a class="back" href="/">← Back to the games</a>
+      </article>
+    </div>
+    <script>
+      (function () {
+        var titles = { es: 'Privacidad · game.it', en: 'Privacy · game.it' };
+        var buttons = document.querySelectorAll('.langs button');
+        function show(lang) {
+          document.documentElement.lang = lang;
+          document.title = titles[lang];
+          document.querySelectorAll('article[lang]').forEach(function (a) { a.hidden = a.lang !== lang; });
+          buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+        }
+        buttons.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.lang); }); });
+        show(document.documentElement.lang === 'en' ? 'en' : 'es');
+      })();
+    </script>
+  </body>
+</html>

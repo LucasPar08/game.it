@@ -26,8 +26,9 @@ export default {
     banners: true,
     bannerGapSec: 60, // como mucho un anuncio nuevo por minuto
     bannerDelayMs: 1200, // las pausas cortas no muestran nada
-    // anuncios con recompensa: solo si el jugador elige verlos (requiere AdSense H5 Games Ads)
-    rewarded: true,
+    // anuncios con recompensa: solo si el jugador elige verlos. Requiere que Google apruebe la cuenta en
+    // H5 Games Ads (beta cerrada); usar la Ad Placement API sin aprobación puede traer problemas con AdSense.
+    rewarded: false,
     // pantalla completa entre partidas (requiere H5 Games Ads). Apagado: interrumpe al jugador.
     interstitials: false,
     interstitialGapSec: 240,

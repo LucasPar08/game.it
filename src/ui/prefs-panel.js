@@ -79,7 +79,8 @@ function html() {
   )}
   ${group(
     t('prefs.help'),
-    `<div class="prow"><span>${t('prefs.report')}</span><button class="pill-btn report-btn" data-action="report"><svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5" /></svg>${t('prefs.reportBtn')}</button></div>`,
+    `<div class="prow"><span>${t('prefs.report')}</span><button class="pill-btn report-btn" data-action="report"><svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5" /></svg>${t('prefs.reportBtn')}</button></div>
+    <div class="prow"><span>${t('prefs.privacy')}</span><a class="pill-btn" href="/privacidad/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z" /></svg>${t('prefs.privacyBtn')}</a></div>`,
   )}
   <div class="prefs-foot"><button class="text-btn" data-action="reset">↺ ${t('prefs.reset')}</button></div>`;
 }
